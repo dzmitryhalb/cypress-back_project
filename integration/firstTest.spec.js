@@ -12,7 +12,7 @@ describe('Test with backend', () => {
     it.skip('verify correct request and response', () => {
 
         cy.server() 
-        cy.route('POST', '**/articles').as('postArticles')
+        cy.route('POST', '**/api.realworld.io/api/articles').as('postArticles')
 
         // cy.intercept('POST', '**/articles').as('postArticles')
 
@@ -32,10 +32,10 @@ describe('Test with backend', () => {
     })
 
     it( 'should gave tags with routing object', () => {
-        cy.get('.tag-list')
-        .should('contain', 'çypress')
-        .and('contain', 'automation')
-        .and('contain', 'testing')
+        cy.get('.tag-list').should('contain', 'çypress').and('contain', 'automation').and('contain', 'testing')
+        
+        
+        
     })
 
     it('verify global feed likes count', () => {
@@ -44,7 +44,7 @@ describe('Test with backend', () => {
 
         cy.contains('Global Feed').click()
         // cy.contains(' Your Feed ').click()
-        cy.get('app-article-list button').then( listOfbuttons => {
+        cy.get('app-article-list button').then(listOfbuttons => {
             expeсt(listOfbuttons[0]).to.contain('1')
             expeсt(listOfbuttons[1]).to.contain('5')
         })
@@ -61,3 +61,4 @@ describe('Test with backend', () => {
 
     })
 })
+
